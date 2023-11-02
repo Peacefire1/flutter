@@ -20,11 +20,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-          style: ButtonStyle(elevation: MaterialStateProperty.all(20)),
-          onPressed: () =>
-              onSubmit(title == "Button off" ? "Button on" : "Button off"),
-          child: Text(title),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Text("Text 3"),
+            ),
+            Expanded(
+              flex: 2,
+              child: Text("Text 3"),
+            ),
+            Expanded(
+              flex: 3,
+              child: Text("Text 3"),
+            ),
+          ],
         ),
       ),
     );
