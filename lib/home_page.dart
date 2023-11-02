@@ -24,22 +24,50 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  int length = 10000;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Align(
-      alignment: FractionalOffset.center,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Visibility(
-            visible: watch,
-            child: Text("Hello"),
+      body: Align(
+        alignment: FractionalOffset.center,
+        child: Scrollbar(
+          child: ListView(
+            physics: BouncingScrollPhysics(),
+            children: List.generate(
+              length,
+              (e) => Container(
+                margin: EdgeInsets.all(10),
+                color: Colors.amberAccent,
+                width: double.infinity,
+                height: 100,
+                child: Center(
+                  child: Text("${e}"),
+                ),
+              ),
+            ),
           ),
-          ElevatedButton(onPressed: onVisible, child: Text("Button"))
-        ],
+          // child: SingleChildScrollView(
+          //   physics: BouncingScrollPhysics(),
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       for (int i = 0; i <= length; i++)
+          //         Container(
+          //           margin: EdgeInsets.all(10),
+          //           color: Colors.amberAccent,
+          //           width: double.infinity,
+          //           height: 100,
+          //           child: Center(
+          //             child: Text("${i}"),
+          //           ),
+          //         ),
+          //     ],
+          //   ),
+          // ),
+        ),
       ),
-    ));
+    );
   }
 }
 
