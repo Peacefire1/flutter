@@ -16,29 +16,30 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  bool watch = true;
+
+  void onVisible() {
+    setState(() {
+      watch = !watch;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 1,
-              child: Text("Text 3"),
-            ),
-            Expanded(
-              flex: 2,
-              child: Text("Text 3"),
-            ),
-            Expanded(
-              flex: 3,
-              child: Text("Text 3"),
-            ),
-          ],
-        ),
+        body: Align(
+      alignment: FractionalOffset.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Visibility(
+            visible: watch,
+            child: Text("Hello"),
+          ),
+          ElevatedButton(onPressed: onVisible, child: Text("Button"))
+        ],
       ),
-    );
+    ));
   }
 }
 
