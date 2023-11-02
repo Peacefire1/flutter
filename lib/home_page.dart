@@ -29,6 +29,26 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("App"),
+        centerTitle: true,
+        automaticallyImplyLeading: true,
+        leading: ElevatedButton.icon(
+            onPressed: () {}, icon: BackButton(), label: Text("")),
+        actions: [
+          Row(
+            children: [
+              Text("Action 1"),
+              ElevatedButton(onPressed: () {}, child: Text("Button"))
+            ],
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Text("Button"),
+      ),
+      // persistentFooterAlignment: AlignmentDirectional.bottomCenter,
       body: Align(
         alignment: FractionalOffset.center,
         child: Scrollbar(
