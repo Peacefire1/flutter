@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,3 +40,15 @@ class MyText extends StatelessWidget {
     return Text(title);
   }
 }
+
+void test() {
+  setEquals(a, b) {
+    if (a == null || b == null)
+      return a == b; // If both are null they can be considered equal
+
+    final int length = a.length;
+    if (b.length != length) return false;
+  }
+}
+
+// Widgets
