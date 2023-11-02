@@ -1,40 +1,36 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String title = "Button off";
+
+  void onSubmit(String value) {
+    setState(() {
+      title = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(100),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue, Colors.red],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            image: DecorationImage(image: NetworkImage("")),
-            shape: BoxShape.circle,
-            color: Colors.amberAccent,
-            // borderRadius: BorderRadius.all(Radius.circular(50)),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 20,
-                offset: Offset(3, 6),
-                spreadRadius: -8,
-                color: Color.fromRGBO(0, 0, 0, .4),
-              )
-            ]),
-        child: Text(
-          "This is String",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
+      body: Center(
+        child: ElevatedButton(
+          style: ButtonStyle(elevation: MaterialStateProperty.all(20)),
+          onPressed: () =>
+              onSubmit(title == "Button off" ? "Button on" : "Button off"),
+          child: Text(title),
         ),
       ),
     );
+  }
+}
+
     // return Scaffold(
     //   body: ColoredBox(
     //     color: Colors.red,
@@ -88,5 +84,3 @@ class HomePage extends StatelessWidget {
     //     ),
     //   ),
     // );
-  }
-}
