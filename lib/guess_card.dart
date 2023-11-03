@@ -40,51 +40,63 @@ class _GuessCardState extends State<GuessCard> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Stack(
         children: [
-          Text(_timer.toString()),
-          SizedBox(
-            height: 50,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: height * _timer / 1000,
+              color: Colors.amberAccent,
+            ),
           ),
-          Row(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              MyCard(
-                _cardList[0],
-                onTap: onClick,
-                active: _showCardList.contains(_cardList[0]),
+              Text(_timer.toString()),
+              SizedBox(
+                height: 50,
+              ),
+              Row(
+                children: [
+                  MyCard(
+                    _cardList[0],
+                    onTap: onClick,
+                    active: _showCardList.contains(_cardList[0]),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  MyCard(
+                    _cardList[1],
+                    onTap: onClick,
+                    active: _showCardList.contains(_cardList[1]),
+                  ),
+                ],
               ),
               SizedBox(
-                width: 30,
+                height: 30,
               ),
-              MyCard(
-                _cardList[1],
-                onTap: onClick,
-                active: _showCardList.contains(_cardList[1]),
-              ),
+              Row(
+                children: [
+                  MyCard(
+                    _cardList[2],
+                    onTap: onClick,
+                    active: _showCardList.contains(_cardList[2]),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  MyCard(
+                    _cardList[3],
+                    onTap: onClick,
+                    active: _showCardList.contains(_cardList[3]),
+                  ),
+                ],
+              )
             ],
           ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              MyCard(
-                _cardList[2],
-                onTap: onClick,
-                active: _showCardList.contains(_cardList[2]),
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              MyCard(
-                _cardList[3],
-                onTap: onClick,
-                active: _showCardList.contains(_cardList[3]),
-              ),
-            ],
-          )
         ],
       ),
     );
